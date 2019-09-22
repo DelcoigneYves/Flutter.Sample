@@ -35,7 +35,9 @@ pipeline {
 
         stage('Tests') {
             steps {
+                sh "chmod +x ./run_tests.sh"
                 sh "./run_tests.sh"
+                sh "bash <(curl -s https://codecov.io/bash) -t e841dae6-da5a-4326-bc1f-9e98c9efff8b"
             }
         }
 
